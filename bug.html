@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This is some text.
+  </div>
+  <script>
+    // Incorrect way to access an element's text content (common mistake)
+    let text = document.getElementById('myDiv').textContent; 
+    console.log(text); //This will work fine 
+    document.getElementById('myDiv').innerText = "<p>This is a paragraph</p>";
+    let text2 = document.getElementById('myDiv').textContent;
+    console.log(text2); //This will return the same as innerText because textContent returns all content, ignoring HTML tags. 
+    
+     //Correct way to get only the text from a div containing html tags
+     let text3 = document.getElementById('myDiv').innerText; 
+     console.log(text3); //this will return 'This is a paragraph'
+  </script>
+</body>
+</html>
